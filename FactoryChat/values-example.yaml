@@ -1,10 +1,9 @@
-
 # Number of replicas to create (only 1 is supported)
 replicaCount: 1
 
 image:
-  registry: "coreysabia"
-  repository: "coreysabia/facbridge"
+  #registry: "factorioserver"
+  repository: "samcat116/factoriochatbot"
   #repository: "facbridge"
   # Container image pull policy
   #pullPolicy: Always
@@ -44,15 +43,28 @@ persistence:
     Size: "20Gi"
     existingClaim: pvc-factorio
   storageClass: longhorn
+setConf:
+  config_path: /opt/factorio-bot
 
-factorioData:
-  dir_path: "/opt/factorio" 
-  host: "10.10.10.42"
+configSettings:
+  logFile: "/opt/factorio/Factorio-server.log"
+  chatChannel: "FACTORIO_CHANNEL_ID"
+  cleanMessages: "false"
+  consoleChannel: "false"
+  logLines: "false"
 
-discordData:
-  key: "YOUR_DISCORD_KEY_HERE"
-  channel_id: "YOUR_CHANNEL_ID_HERE"
+  startupMessage:
+    enabled: "false"
+    messages: "Factorio Chat bot has now been shoved up your ass!"
 
+  RconIP: "RCON_IP_PORT"
+  RconPort: "27015"
+  RconPassword: "RCON_PASSWORD"
+  token: "DISCORD_BOT_TOKEN"
+
+#console logging for discord chat bot
 # ARGS for additional arguments to be passed to the server execution
 #arguments: [
+#    "--console-log,", 
+#    "/opt/factorio/Factorio-server.log,",
 #]
