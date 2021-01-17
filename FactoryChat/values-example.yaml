@@ -1,0 +1,58 @@
+
+# Number of replicas to create (only 1 is supported)
+replicaCount: 1
+
+image:
+  registry: "coreysabia"
+  repository: "coreysabia/facbridge"
+  #repository: "facbridge"
+  # Container image pull policy
+  #pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+# Security options the operator container should run with
+securityContext:
+  runAsUser: 1000
+  fsGroup: 2000
+
+service:
+  type: LoadBalancer
+  port: 30000
+
+# Compute Resources required by the operator container
+resources: # +doc-gen:break
+  requests:
+    memory: 512Mi
+    cpu: 500m
+# Node labels for pod assignment
+# Example:
+# nodeSelector:  
+#  beta.kubernetes.io/os: linux
+#  beta.kubernetes.io/arch: amd64
+nodeSelector: {} # +doc-gen:break
+
+# Tolerations for pod assignment
+tolerations: []
+
+# Affinity rules for pod assignment
+affinity: {}
+
+# Sets the data persistence volume configuration
+persistence:
+  dataDir: 
+    Size: "20Gi"
+    existingClaim: pvc-factorio
+  storageClass: longhorn
+
+factorioData:
+  dir_path: "/opt/factorio" 
+  host: "10.10.10.42"
+
+discordData:
+  key: "YOUR_DISCORD_KEY_HERE"
+  channel_id: "YOUR_CHANNEL_ID_HERE"
+
+# ARGS for additional arguments to be passed to the server execution
+#arguments: [
+#]
