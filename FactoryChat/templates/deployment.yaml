@@ -35,15 +35,8 @@ spec:
         volumeMounts:
           - name: datadir
             mountPath: /factorio
-        env:
-        - name: FACTORIO_DATA_DIR_PATH
-          value: {{ .Values.factorioData.dir_path | quote }}
-        - name: FACTORIO_HOST
-          value: {{ .Values.factorioData.host | quote }}
-        - name: DISCORD_KEY
-          value: {{ .Values.discordData.key | quote }}
-        - name: CHANNEL_ID
-          value: {{ .Values.discordData.channel_id | quote }}
+          - name: {{ template "factorychat.fullname" . }}-settingsconfig
+            mountPath: {{ .Values.setConf.config_path | quote }}
 
         # ARGS for additional arguments to be passed to the server execution
         args: [
@@ -57,3 +50,6 @@ spec:
         - name: datadir
           persistentVolumeClaim:
             claimName: {{ if .Values.persistence.dataDir.existingClaim }} {{.Values.persistence.dataDir.existingClaim}} {{ else }}{{ template "factorio.fullname" . }}-datadir {{ end }}
+        - name: {{ template "factorychat.fullname" . }}-settingsconfig
+          configMap:
+            name: {{ template "factorychat.fullname" . }}-settingsconfig
