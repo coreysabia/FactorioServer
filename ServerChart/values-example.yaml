@@ -38,8 +38,8 @@ affinity: {}
 # Sets the data persistence volume configuration
 persistence:
   dataDir: 
-    Size: "20Gi"
-    existingClaim: pvc-factorio
+    Size: 
+    existingClaim: csi-pvc
   storageClass: longhorn
 factorioServer:
   # specify a save name
