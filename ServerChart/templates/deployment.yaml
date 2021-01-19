@@ -39,6 +39,8 @@ spec:
             mountPath: /factorio
           - name: {{ template "factorio.fullname" . }}-serversettingsconfig
             mountPath: {{ .Values.factorioServer.config_path | quote }}
+            #subPath: config.json
+
         env:
         - name: UPDATE_MODS_ON_START
           value: {{ .Values.factorioServer.update_mods_on_start | quote }}

@@ -28,16 +28,13 @@ spec:
         securityContext:
           runAsUser: 0
           allowPrivilegeEscalation: true
-        ports:
-        - name: factorychat
-          containerPort: {{ .Values.service.port }}
-          protocol: UDP
         volumeMounts:
           - name: datadir
             mountPath: /factorio
           - name: {{ template "factorychat.fullname" . }}-settingsconfig
-            mountPath: {{ .Values.setConf.config_path | quote }}
-
+            mountPath: /opt/factorio-bot/config.json
+            subPath: config.json
+            #mountPath: {{ .Values.setConf.config_path | quote }}
         # ARGS for additional arguments to be passed to the server execution
         args: [
               {{  range .Values.arguments }}
