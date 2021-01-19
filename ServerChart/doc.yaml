@@ -1,11 +1,11 @@
 project:
   name: factorio
   shortName: factorio
-  url: https://github.com/coreysabia/factorio-server-charts
+  url: https://github.com/coreysabia/factorioserver
   description: A Helm chart for running factorio in kubernetes
   app: Factorio
 repository:
-  url: https://github.com/coreysabia/factorio-server-charts
+  url: https://github.com/coreysabia/factorioserver
   name: github
 chart:
   name: factorio

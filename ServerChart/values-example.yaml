@@ -5,7 +5,7 @@ replicaCount: 1
 image:
   repository: "factoriotools/factorio"
   # Container image pull policy
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
@@ -51,13 +51,13 @@ factorioServer:
   # lets the game know if you want to load the latest save
   load_latest_save: true
   # Location of the configuration files that are generated
-  config_path: /srv
-  config_sub_path: config
+  config_path: /srv/config.json
+  config_sub_path: config.json
 
 
 serverSettings:
   # Your Instance Name
-  name: 2edgy4me Factorio
+  name: 2edgy4you
   # Your Instance Description
   description: "Factorio running on Kubernetes"
   tags:
@@ -72,10 +72,10 @@ serverSettings:
     # Game will be broadcast on LAN
     lan: true
   # Your factorio.com login credentials. Required for games with visibility public
-  username: 'YOUR_USERNAME_HERE'
-  password: ''
+  username: 'SadEffort'
+  password: 'PASS_NOT_NEEDED_WITH_TOKEN'
   # Authentication token. May be used instead of password above.
-  token: 'YOUR_TOKEN_HERE'
+  token: 'YOUR_FACTORIO_TOKEN'
   # password required to log into the factorio server
   game_password: '4me'
   # When set to true, the server will only allow clients that have a valid Factorio.com account
@@ -123,13 +123,13 @@ serverSettings:
 # ARGS for additional arguments to be passed to the server execution
 arguments: [
     "--console-log,", 
-    "/opt/factorio/Factorio-server.log,",
+    "/factorio/Factorio-server.log,",
 ]
 
 # Password and port for the rcon service and lb
 rcon:
   type: LoadBalancer
-  password: "01234567890123456"
+  password: "YOUR_RCON_PASSWORD"
   port: 27015
 
 
