@@ -68,12 +68,12 @@ serverSettings:
   # Game visibility
   visibility:
     # Game will be published on the official Factorio matching server
-    public: true
+    public: false
     # Game will be broadcast on LAN
     lan: true
   # Your factorio.com login credentials. Required for games with visibility public
   username: 'SadEffort'
-  password: 'PASS_NOT_NEEDED_WITH_TOKEN'
+  password: ''
   # Authentication token. May be used instead of password above.
   token: 'YOUR_FACTORIO_TOKEN'
   # password required to log into the factorio server
@@ -129,7 +129,7 @@ arguments: [
 # Password and port for the rcon service and lb
 rcon:
   type: LoadBalancer
-  password: "YOUR_RCON_PASSWORD"
+  password: "01234567890123456"
   port: 27015
 
 
