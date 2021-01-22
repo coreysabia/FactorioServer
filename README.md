@@ -4,4 +4,6 @@ This repository holds our deployment of our Factorio server. It contains the act
 
 ## Installing
 
-To install the application, run `helm install . --generate-name` after cloning this repo.
+First make sure you have the helm client installed and that there is a valid kubeconfig available for `kubectl`. To install, first change to the `Factorio` directory and run
+`helm dependency up` or `helm dep up`, followed by `helm install NAME . --values.yaml`, where NAME is the name you chose.
+
