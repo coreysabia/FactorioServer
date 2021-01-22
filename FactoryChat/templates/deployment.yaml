@@ -41,12 +41,14 @@ spec:
               {{ . }}
               {{ end }}
           ]
-
+      #TEMP
+      nodeSelector:
+        k3s.io/hostname: k3s-node-2
 
       volumes:
         - name: datadir
           persistentVolumeClaim:
             claimName: {{ if .Values.persistence.dataDir.existingClaim }} {{.Values.persistence.dataDir.existingClaim}} {{ else }}{{ template "factorio.fullname" . }}-datadir {{ end }}
         - name: {{ template "factorychat.fullname" . }}-settingsconfig
-          configMap:
+          configMap:a
             name: {{ template "factorychat.fullname" . }}-settingsconfig
