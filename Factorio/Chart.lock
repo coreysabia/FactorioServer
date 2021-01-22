@@ -1,0 +1,6 @@
+dependencies:
+- name: factorio-server-charts
+  repository: https://sqljames.github.io/factorio-server-charts/
+  version: 1.0.7
+digest: sha256:744f9c0c72d8422b5668fa032ff71634e82398761b46c8061c7bd067cdca188b
+generated: "2021-01-20T22:15:07.307124-05:00"

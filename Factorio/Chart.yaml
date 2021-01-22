@@ -1,0 +1,28 @@
+apiVersion: v2
+name: Factorio
+description: A Helm chart for deploying our Factorio and a Discord Bridge
+
+type: application
+version: 0.1.0
+appVersion: 1.16.0
+
+dependencies:
+# This is the main factorio server chart we use
+    - name: factorio-server-charts
+      version: 1.0.7
+      repository: https://sqljames.github.io/factorio-server-charts/
+      alias: factorio-server
+      import-values: 
+       #- We need to put the values hereeee
+
+maintainers:
+    - name: Sam Schmitt
+      email: hey@samschmitt.com
+      url: https://samschmitt.com
+    - name: Corey Sabia
+      email: corey@coreysabia.com
+      url: https://code.2edgy4.me
+
+
+
+

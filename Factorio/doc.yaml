@@ -1,0 +1,17 @@
+project:
+  name: factorychat
+  shortName: factorychat
+  url: https://github.com/coreysabia/factorioserver
+  description: A Helm chart for running factorychat in kubernetes
+  app: FactoryChat
+repository:
+  url: https://github.com/coreysabia/factorioserver
+  name: github
+chart:
+  name: factorychat
+  version: 1.1.12
+  values: "-- generate from values file --"
+  valuesExample: "-- generate from values file --"
+release:
+  name: factorychat
+  namespace: factorio

@@ -6,6 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+# VALUES
+/FactoryChat/values.yaml
+/ServerChart/values.yaml
+
+
 # Distribution / packaging
 .Python
 build/

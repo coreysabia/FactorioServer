@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "factorychat.fullname" . }}
+  labels:
+    app: {{ template "factorychat.fullname" . }}
+    chart: {{ template "factorychat.fullname" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ template "factorychat.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "factorychat.fullname" . }}
+    spec:
+      securityContext:
+        runAsUser: 845
+        runAsGroup: 845
+        fsGroup: 845
+      containers:
+      - name: {{ template "factorychat.fullname" . }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        securityContext:
+          runAsUser: 0
+          allowPrivilegeEscalation: true
+        volumeMounts:
+          - name: datadir
+            mountPath: /factorio
+          - name: {{ template "factorychat.fullname" . }}-settingsconfig
+            mountPath: /opt/factorio-bot/config.json
+            subPath: config.json
+            #mountPath: {{ .Values.setConf.config_path | quote }}
+        # ARGS for additional arguments to be passed to the server execution
+        args: [
+              {{  range .Values.arguments }}
+              {{ . }}
+              {{ end }}
+          ]
+
+
+      volumes:
+        - name: datadir
+          persistentVolumeClaim:
+            claimName: {{ if .Values.persistence.dataDir.existingClaim }} {{.Values.persistence.dataDir.existingClaim}} {{ else }}{{ template "factorio.fullname" . }}-datadir {{ end }}
+        - name: {{ template "factorychat.fullname" . }}-settingsconfig
+          configMap:
+            name: {{ template "factorychat.fullname" . }}-settingsconfig
