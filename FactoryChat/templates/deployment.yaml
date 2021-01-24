@@ -50,5 +50,5 @@ spec:
           persistentVolumeClaim:
             claimName: {{ if .Values.persistence.dataDir.existingClaim }} {{.Values.persistence.dataDir.existingClaim}} {{ else }}{{ template "factorio.fullname" . }}-datadir {{ end }}
         - name: {{ template "factorychat.fullname" . }}-settingsconfig
-          configMap:a
+          configMap:
             name: {{ template "factorychat.fullname" . }}-settingsconfig
