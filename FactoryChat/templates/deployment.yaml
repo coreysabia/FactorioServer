@@ -41,9 +41,6 @@ spec:
               {{ . }}
               {{ end }}
           ]
-      #TEMP
-      nodeSelector:
-        k3s.io/hostname: k3s-node-2
 
       volumes:
         - name: datadir
